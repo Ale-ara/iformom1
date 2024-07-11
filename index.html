@@ -228,22 +228,16 @@
         }
 
         @media only screen and (max-width: 576px) {
-            .container {
-                margin: 80px auto;
-                padding: 10px;
-            }
-            
-            .header_container span {
-                right: 5px;
-            }
-            
-            .header_img {
-                right: 0;
-                width: 35px;
-                height: 35px;
-            }
-        }
-
+    .btn-primary,
+    .btn-secondary,
+    .btn-success {
+        width: 100%; /* Faz com que os botões ocupem a largura total do container */
+        max-width: none; /* Remove a largura máxima definida para os botões */
+        height: 50px; /* Reduz a altura dos botões para economizar espaço */
+        font-size: 16px; /* Reduz o tamanho da fonte nos botões */
+        margin-top: 10px; /* Ajusta a margem superior dos botões */
+    }
+}
         @media only screen and (min-width: 1600px) {
     .container {
         max-width: 1000px; /* Ajusta a largura máxima do container conforme necessário */
