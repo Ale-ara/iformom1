@@ -324,7 +324,7 @@
                 <button type="submit" class="btn btn-primary">Enviar</button>
             </form>
         </div>
-
+    
         <div id="resultSection" class="result-section">
             <p><strong>Nome de Usuário:</strong> <span id="resultUsername"></span></p>
             <p><strong>Curso Aplicado:</strong> Aula de Segurança Operacional (ASO)</p>
@@ -335,7 +335,7 @@
             <button class="btn btn-secondary" onclick="editData()">Corrigir</button>
             <button class="btn btn-success" onclick="sendDataToGoogleSheets()">Enviar</button>
         </div>
-
+    
         <div id="editSection" class="result-section">
             <h2>Correção</h2>
             <form id="editForm" onsubmit="updateData(event)">
@@ -352,15 +352,15 @@
                     <input type="text" class="form-control" id="editComments" name="editComments" placeholder="Comentários">
                 </div>
                 <button type="submit" class="btn btn-primary">Salvar</button>
-              
             </form>
         </div>
-
+    
         <div id="successMessage" class="success-message">
             <p>Dados enviados com sucesso!</p>
             <a href="https://docs.google.com/spreadsheets/d/1B3dP1kLZnkmie6BL61jEYGgb_d0Fhu_QrMYXnjHAIo8/edit?usp=sharing" class="btn btn-success">Ver Planilha</a>
         </div>
     </div>
+    
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
