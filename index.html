@@ -309,6 +309,32 @@
     }
 
 }
+
+ #loading-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+            opacity: 0; 
+            transition: opacity 0.5s ease-in-out; 
+        }
+        #loading-message.show {
+            opacity: 1;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translate(-50%, -50%); }
+            to { opacity: 0; transform: translate(-50%, -60%); }
+        }
+        
     </style>
 </head>
 
@@ -359,6 +385,11 @@
                 <button type="submit" class="btn btn-primary">Salvar</button>
             </form>
         </div>
+
+        <div id="loading-message">
+    <h3>Carregando...</h3>
+</div>
+
     
         <div id="successMessage" class="success-message">
             <p>Dados enviados com sucesso!</p>
@@ -427,6 +458,10 @@
             approvedStudents: document.getElementById('resultApprovedStudents').textContent,
             comments: document.getElementById('resultComments').textContent
         };
+
+       const loadingMessage = document.getElementById('loading-message');
+        loadingMessage.classList.add('show');
+        loadingMessage.style.animation = 'fadeIn 0.5s ease-in-out';
 
         fetch('https://script.google.com/macros/s/AKfycbx_F85liTAecY0_nt7S2dwwOvQ8BoabguoM-mHAa9e0iBh1Mx0Mtw64NbE41wu-xGAxew/exec', {
             method: 'POST',
