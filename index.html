@@ -414,47 +414,38 @@
         document.getElementById('resultSection').classList.add('show');
     }
 
-    function sendDataToGoogleSheets() {
-    // Desativa o botão de envio e exibe a mensagem de "Enviando..."
-    const submitButton = document.getElementById('submitButton');
-    submitButton.disabled = true;
-    submitButton.textContent = 'Enviando...';
+  function sendDataToGoogleSheets() {
+        const now = new Date();
+        const formattedEndDateTime = now.toLocaleString();
 
-    const now = new Date();
-    const formattedEndDateTime = now.toLocaleString();
+        const data = {
+            username: document.getElementById('resultUsername').textContent,
+            course: 'Aula de Segurança Operacional',
+            dateTime: document.getElementById('resultDateTime').textContent,
+            endDateTime: formattedEndDateTime, 
+            presentStudents: document.getElementById('resultPresentStudents').textContent,
+            approvedStudents: document.getElementById('resultApprovedStudents').textContent,
+            comments: document.getElementById('resultComments').textContent
+        };
 
-    const data = {
-        username: document.getElementById('resultUsername').textContent,
-        course: 'Aula de Segurança Operacional',
-        dateTime: document.getElementById('resultDateTime').textContent,
-        endDateTime: formattedEndDateTime,
-        presentStudents: document.getElementById('resultPresentStudents').textContent,
-        approvedStudents: document.getElementById('resultApprovedStudents').textContent,
-        comments: document.getElementById('resultComments').textContent
-    };
-
-    fetch('https://script.google.com/macros/s/AKfycbx_F85liTAecY0_nt7S2dwwOvQ8BoabguoM-mHAa9e0iBh1Mx0Mtw64NbE41wu-xGAxew/exec', {
-        method: 'POST',
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(result => {
-        if (result.result === 'success') {
-            document.getElementById('resultSection').classList.remove('show');
-            document.getElementById('successMessage').style.display = 'block';
-        } else {
-            alert('Erro ao enviar dados: ' + result.error);
-        }
-    })
-    .catch(error => {
-        alert('Erro ao enviar dados: ' + error.message);
-    })
-    .finally(() => {
-        // Reativa o botão de envio e redefine o texto (opcional, se necessário)
-        submitButton.disabled = false;
-        submitButton.textContent = 'Enviar'; // ou redireciona o usuário para outra página
-    });
-}
+        fetch('https://script.google.com/macros/s/AKfycbx_F85liTAecY0_nt7S2dwwOvQ8BoabguoM-mHAa9e0iBh1Mx0Mtw64NbE41wu-xGAxew/exec', {
+            method: 'POST',
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.result === 'success') {
+                document.getElementById('resultSection').classList.remove('show');
+                document.getElementById('successMessage').style.display = 'block';
+            } else {
+                alert('Erro ao enviar dados: ' + result.error);
+            }
+        })
+        .catch(error => {
+            alert('Erro ao enviar dados: ' + error.message);
+        });
+    }
+</script>
 
 
 </body>
